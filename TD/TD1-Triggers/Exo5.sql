@@ -2,7 +2,8 @@
 CREATE OR REPLACE TRIGGER MAJ_NbPersonnel
 AFTER INSERT OR DELETE OR UPDATE ON EMP
 BEGIN
-    UPDATE SERVICE s SET NbPersonnel = (SELECT COUNT(*) FROM EMP e WHERE e.SertNo = s.SertNo);
+    UPDATE SERVICE s SET NbPersonnel = (SELECT COUNT(*) FROM EMP e 
+    WHERE e.SertNo = s.SertNo);
 END;
 
 --2--
@@ -29,4 +30,19 @@ BEGIN
 END;
 
 --4--
-CREATE OR REPLACE TRIGGER RST_SupEmp
+CREATE OR REPLACE TRIGGER RST_BudgetCheck
+BEFORE INSERT ON SERVICE_PROJET
+FOR EACH ROW WHEN 
+DECLARE
+    CoutTotal NUMBER;
+    Budget NUMBER;
+    NewCout NUMBER;
+BEGIN
+    SELECT SUM(P.coutP*SP.pourcentage) INTO CoutTotal FROM PROJET P , SERVICE_PROJET SP 
+    WHERE P.Numprojet = SP.numprojet AND SP.SertNo = :NEW.SertNo;
+    SELECT Budget INTO Budget FROM SERVICE WHERE SertNo = :NEW.SertNo;
+    SELECT coutP INTO NewCout FROM PROJET WHERE Numprojet = :NEW.Numprojet;
+    IF CoutTotal + pourcentage*NewCout > Budget THEN
+        RAISE_APPLICATION_ERROR(-20303, 'Le cout total dépasse 100 000');
+    END IF;
+END;
