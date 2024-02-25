@@ -164,14 +164,18 @@ END;
 --Q.b.2:Calculer automatiquement la valeur de champ box-office d'un film avec un déclencheur ligne
 -- TODO:fix this trigger
 CREATE OR REPLACE TRIGGER Box_Office
-BEFORE UPDATE ON SEANCE
+BEFORE INSERT OR UPDATE ON SEANCE
 FOR EACH ROW 
 DECLARE newBoxOffice NUMBER;
 BEGIN
-    SELECT SUM(Prix*Nbbillets) INTO newBoxOffice FROM SEANCE 
-    WHERE ID_Film = :NEW.ID_Film AND ID_Seance != :OLD.ID_Seance;
+    --SELECT SUM(Prix*Nbbillets) INTO newBoxOffice FROM SEANCE 
+    --WHERE ID_Film = :NEW.ID_Film AND ID_Seance != :OLD.ID_Seance;
 
-    UPDATE FILM SET BOX_OFFICE = :NEW.Prix*:NEW.Nbbillets + newBoxOffice
-    WHERE ID_Film = :NEW.ID_Film;
+    --UPDATE FILM SET BOX_OFFICE = :NEW.Prix*:NEW.Nbbillets + newBoxOffice
+    --WHERE ID_Film = :NEW.ID_Film;
+    --
+UPDATE FILM SET BOX_OFFICE = :NEW.Prix*:NEW.Nbbillets + BOX_OFFICE
+  WHERE ID_Film = :NEW.ID_Film;
+    
 END;
 /
