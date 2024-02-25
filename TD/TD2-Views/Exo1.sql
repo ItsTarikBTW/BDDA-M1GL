@@ -1,0 +1,44 @@
+--1&2--
+CREATE OR REPLACE VIEW CEpargne
+AS SELECT * FROM COMPTE
+WHERE TYPE = 'CP'
+WITH CHECK OPTION;
+
+--4--
+CREATE OR REPLACE VIEW CEpargne
+AS SELECT * FROM COMPTE
+WHERE TYPE = 'CP'
+WITH READ ONLY;
+
+--5--
+CREATE OR REPLACE VIEW CCourant
+AS SELECT 
+cpt.NumCpt AS ncompte,
+cli.NumCli AS nclient,
+cli.NomCli AS nomclient,
+cpt.SoldeCpt AS solde
+FROM COMPTE cpt, CLIENT cli
+WHERE cpt.NumCli = cli.NumCli
+AND cpt.TYPE = 'CC'
+WITH READ ONLY;
+
+--6--
+CREATE OR REPLACE VIEW CSoldeT
+AS SELECT
+NumCli,
+COUNT(*) AS nbcompte,
+SUM(SoldeCpt) AS solde
+FROM COMPTE
+WHERE TYPE = 'CP'
+GROUP BY NumCli
+WITH READ ONLY;
+
+--7--
+SELECT MAX(solde) FROM CSoldeT;
+
+--8--
+CREATE OR REPLACE VIEW Jours_depot
+AS SELECT * FROM OPERATION
+WHERE DATE_FORMAT(SYSDATE(),'%W') IN ('Friday','Saturday')
+WITH CHECK OPTION;
+
