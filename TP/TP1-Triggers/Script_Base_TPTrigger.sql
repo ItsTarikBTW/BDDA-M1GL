@@ -400,7 +400,7 @@ BEGIN
 END;
 /
 
---Q.b.1:Mettre à jour le nombre de billets vendus de chaque séance par un déclencheur ligne et un autre global
+--Q.b.3:Mettre à jour le nombre de billets vendus de chaque séance par un déclencheur ligne et un autre global
 ALTER TABLE SEANCE ADD NBBILLETS NUMBER DEFAULT 0;
 
 --Déclencheur ligne
@@ -454,7 +454,7 @@ BEGIN
 END;
 /
 
---Q.b.2:Calculer automatiquement la valeur de champ box-office d'un film avec un déclencheur ligne
+--Q.b.4:Calculer automatiquement la valeur de champ box-office d'un film avec un déclencheur ligne
 CREATE OR REPLACE TRIGGER BOX_OFFICE AFTER
     INSERT OR UPDATE ON SEANCE FOR EACH ROW
 BEGIN
@@ -564,3 +564,51 @@ BEGIN
             C.ID_CINEMA;
     END IF;
 END;
+
+--Views --
+
+--1&2--
+CREATE OR REPLACE VIEW Action(Titre,Genre)
+AS SELECT TITRE,GENRE FROM FILM WHERE UPPER(GENRE) LIKE '%ACTION%'
+WITH READ ONLY;
+
+--3--
+CREATE OR REPLACE VIEW  BilletsFilm (film,billets)
+AS SELECT Titre, SUM(NBBILLETS) FROM SEANCE S, FILM F WHERE S.ID_FILM = F.ID_FILM 
+GROUP BY Titre
+WITH READ ONLY;
+
+--4--
+--a--
+SELECT Titre, NBT
+FROM (
+  SELECT Titre, SUM(NBBILLETS) AS NBT
+  FROM SEANCE S, FILM F
+  WHERE S.ID_FILM = F.ID_FILM
+  GROUP BY Titre
+  ORDER BY SUM(NBBILLETS) DESC
+)
+WHERE ROWNUM <= 1;
+--b--
+SELECT *
+FROM BilletsFilm
+WHERE ROWNUM <= 1;
+
+--5--
+CREATE OR REPLACE VIEW SeanceFilm (Seance, dates, TitreFilm, IDFilm, Cinema, IDCinema)
+AS SELECT S.ID_SEANCE, DATES, F.TITRE, F.ID_FILM, C.NOM, C.ID_CINEMA FROM SEANCE S, FILM F, CINEMA C
+WHERE S.ID_FILM = F.ID_FILM AND S.ID_CINEMA = C.ID_CINEMA;
+
+SELECT COLUMN_NAME, INSERTABLE, 
+UPDATABLE, DELETABLE 
+FROM USER_UPDATABLE_COLUMNS 
+WHERE TABLE_NAME = UPPER('SeanceFilm');
+
+--6--
+
+CREATE OR REPLACE VIEW StatCine (mois, année, NomC, ID_cine, Capa, Taux)
+AS SELECT S.MOIS, S.ANNÉE, C.NOM, C.ID_CINEMA, C.CAPACITÉ, S.TAUX_OCCUPATION FROM STATISTIQUES S, CINEMA C
+WHERE S.ID_CINEMA = C.ID_CINEMA;
+
+CREATE OR REPLACE TRIGGER MAJ_CAP
+AS 
