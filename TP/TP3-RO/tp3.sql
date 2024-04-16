@@ -103,3 +103,40 @@ HAVING MAX(S.Prix) = (
         PROJECTIONS P,
         TABLE(P.SEANCES) S
 );
+
+SELECT
+    p.id_film.titre,
+    s.prix
+FROM
+    projections       p,
+    TABLE ( seances ) s
+WHERE
+    s.prix = (
+        SELECT
+            MAX(s1.prix)
+        FROM
+            TABLE ( p.seances ) s1
+    );
+
+
+INSERT INTO PROJECTIONS VALUES (
+    3,
+    (SELECT REF(C) FROM Cinemas C WHERE C.ID_CINEMA = 1),
+    (SELECT REF(F) FROM Films F WHERE F.ID_FILM = 1 ),
+    EnsSeance(
+        TSeance(
+            1,
+            SYSDATE,
+            '20:00',
+            '21:30',
+            1200
+        ),
+        TSeance(
+            2,
+            SYSDATE,
+            '22:00',
+            '23:30',
+            1000
+        )
+    )
+);

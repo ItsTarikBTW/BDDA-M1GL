@@ -1,0 +1,20 @@
+{"_id":{"$oid":"5af2ed8c7afa5a2e7cb6997e"},"nom":"Salle Ibn Khaldoun","adresse":{"rue":"12, Rue Docteur Saâdane","ville":"Alger"},"téléphone":"021 40 30 22","capacité salle":160}
+{"_id":{"$oid":"5af2f0a77afa5a2e7cb6997f"},"nom":"AFRIQUE","adresse":{"rue":"Rue des Frères Meslem, Sidi M'Hamed ","ville":"Alger"}}
+{"_id":{"$oid":"5af2f1497afa5a2e7cb69980"},"nom":"Le Mouggar","adresse":{"rue":"Rue Asselah Hocine","ville":"Alger"}}
+{"_id":{"$oid":"5af2f1cc7afa5a2e7cb69981"},"nom":"Djamel Eddine Chanderli (Le Colisée)","adresse":{"rue":"Rue Frères Ibn Chake","ville":"Tlemcen"}}
+{"_id":{"$oid":"5f4e91f4f433213384ec58f9"},"nom":"Salle Ibn Zaydoun","adresse":{"rue":" Office Riadh El Fath, El Madania","ville":"Alger"},"téléphone":"021  21 65 25 70","capacité salle":200}
+{"_id":{"$oid":"5f4e92a1f433213384ec58fa"},"nom":"Salle El SAHEL","adresse":{"rue":" Cheraga","ville":"Alger"},"capacité salle":240}
+{"_id":{"$oid":"5f4e954ef433213384ec58fc"},"nom":"Cosmos","adresse":{"rue":"Centre des Arts Niveau 108 Riadh-el-feth, El Madania","ville":"Alger"},"téléphone":"0561 92 65 72","capacité salle":270}
+{"_id":{"$oid":"5f4e99edf433213384ec58fe"},"nom":"Marhaba","adresse":{"rue":"Bvd Emir AEK","ville":"Oran"}}
+{"_id":{"$oid":"5f4e9a1df433213384ec58ff"},"nom":"Es Saada","adresse":{"rue":"Rue Bahloul Ahmed","ville":"Oran"},"téléphone":"041 21 42 64","capacité salle":300}
+{"_id":{"$oid":"5f4e9a56f433213384ec5900"},"nom":"Le Murdjadjo","adresse":{"rue":"Rue Larbi Ben M'hidi","ville":"Oran"},"téléphone":"0550 12 21 00","capacité salle":100}
+{"_id":{"$oid":"5f4e9a87f433213384ec5901"},"nom":"Mogador","adresse":{"rue":"Rue Bahloul Ahmed","ville":"Oran"}}
+{"_id":{"$oid":"5f4e9ab7f433213384ec5902"},"nom":"El Feth (ex-Pigalle)","adresse":{"rue":"Rue S L Hamdani Adda","ville":"Oran"},"téléphone":"0550 05 93 31","capacité salle":200}
+{"_id":{"$oid":"5f4e9b70f433213384ec5903"},"nom":"Olympia","adresse":{"rue":"Alger Centre ","ville":"Alger"},"téléphone":" 021 33 69 33"}
+{"_id":{"$oid":"5f4e9bb7f433213384ec5904"},"nom":"Salle Aures","adresse":{"rue":"Rue des Frères Bouabsa","ville":"Batna"},"téléphone":"0550 05 93 31","capacité salle":145}
+{"_id":{"$oid":"5f4e9bf1f433213384ec5905"},"nom":"Marignan","adresse":{"rue":"Ave Gharafa Brahim, Bab El Oued","ville":"Alger"},"téléphone":"0561 33 65 82","capacité salle":270}
+{"_id":{"$oid":"5f4e9c44f433213384ec5906"},"nom":"El-Khyam Cinéma Ex-Debussy","adresse":{"rue":"Avenue Mustapha Sayed El Ouali","ville":"Alger"},"téléphone":"021 40 30 22","capacité salle":160}
+{"_id":{"$oid":"5f4e9c77f433213384ec5907"},"nom":"Amarna","adresse":{"rue":"Boulevard de la Macta","ville":"Sidi Bel Abbès"},"téléphone":"0659 63 11 23"}
+{"_id":{"$oid":"5f4e9cc4f433213384ec5908"},"nom":"Salle An Nasr","adresse":{"rue":" Cité Ennasr","ville":"Batna"}}
+{"_id":{"$oid":"5f4e9d27f433213384ec5909"},"nom":"Little Rex","adresse":{"rue":"Hydra ","ville":"Alger"},"téléphone":"0794 05 35 67","capacité salle":270}
+{"_id":{"$oid":"5f4e9d49f433213384ec590a"},"nom":"Sierra Maestra","adresse":{"rue":"Sidi M'Hamed ","ville":"Alger"}}

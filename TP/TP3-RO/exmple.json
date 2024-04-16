@@ -1,0 +1,37 @@
+{
+    "cour": [{
+        "code": 1,
+        "titre": "Cours de programmation",
+        "description": "Cours de programmation en C++",
+        "credits": 3,
+        "prerequis":[
+            {"code":1},
+            {"code":2}
+        ]
+        },
+    ],
+    "etudiant":[{
+        "_id": 1,
+        "nom": "John",
+        "prenom": "Snow",
+        "adresse": {
+                "_id": 1,
+                "num_rue": 123,
+                "rue": "rue du mur",
+                "ville": "Winterfell"
+            }
+        },
+        {
+            "_id": 2,
+            "nom": "Daenerys",
+            "prenom": "Targaryen",
+            "adresse": {
+                "_id": 2,
+                "num_rue": 456,
+                "rue": "rue des dragons",
+                "ville": "Meereen"
+            }
+        }
+    ],
+
+}

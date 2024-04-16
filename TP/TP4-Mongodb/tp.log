@@ -1,0 +1,7 @@
+show dbs
+
+use ProgrammeCinema
+
+db.createCollection("AgendaCinema")
+
+show collections
