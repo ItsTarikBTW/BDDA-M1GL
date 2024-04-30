@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"27b8745c69ae41e399deb6aa8a66117e","collectionName":"AgendaCinema","type":"collection"}
