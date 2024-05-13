@@ -61,3 +61,4 @@ db.AgendaCinema.aggregate([
 
 //b
 //mongodump.exe -d ProgrammeCinema -o C://Users//tarik//OneDrive//Documents//S2//BDDA//TP//TP4-Mongodb
+//mongorestore -d ProgrammeCinema C://Users//tarik//OneDrive//Documents//S2//BDDA//TP//TP4-Mongodb
